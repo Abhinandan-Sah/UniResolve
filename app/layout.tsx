@@ -6,6 +6,8 @@ import { Toaster } from '@/components/ui/sonner';
 import { SidebarProvider } from '@/components/ui/sidebar';
 import { SessionProvider } from 'next-auth/react';
 import { SessionProviderWrapper } from '@/components/providers/sessionProvider';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,8 +20,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'MarkMate',
-  description: 'A platform for creating and managing tests',
+  title: 'UniResolve — Unified AI Evaluation',
+  description: 'UniResolve automates handwritten evaluation, MCQs and subjective grading using AI.',
+  openGraph: {
+    title: 'UniResolve — Unified AI Evaluation',
+    description: 'Automating human evaluation with accuracy, fairness, and intelligence.',
+    url: 'http://localhost:3000',
+  },
 };
 
 export default function RootLayout({
@@ -40,7 +47,9 @@ export default function RootLayout({
         >
             <main>
               <SessionProviderWrapper>
-                {children}
+                <Navbar />
+                <div className="pt-20">{children}</div>
+                <Footer />
               </SessionProviderWrapper>
             </main>
           <Toaster />
